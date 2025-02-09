@@ -6,3 +6,4 @@ Welcome to my personal repository for the **NLP** course.
 
 - **S01**: Python exercises for NLP
 - **S02**: Regular expresions
+- **S03:** Text processing
