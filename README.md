@@ -8,3 +8,4 @@ Welcome to my personal repository for the **NLP** course.
 - **S02**: [Regular expressions](./S02)
 - **S03**: [Text processing](./S03)
 - **S04**: [Text representation](./S04)
+- **S05**: [Evaluation metrics](./S05)
