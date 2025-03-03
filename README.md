@@ -9,3 +9,4 @@ Welcome to my personal repository for the **NLP** course.
 - **S03**: [Text processing](./S03)
 - **S04**: [Text representation](./S04)
 - **S05**: [Evaluation metrics](./S05)
+- **S06**: [Deep Learning and Embeddings](./S06)
