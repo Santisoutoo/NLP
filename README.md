@@ -10,3 +10,4 @@ Welcome to my personal repository for the **NLP** course.
 - **S04**: [Text representation](./S04)
 - **S05**: [Evaluation metrics](./S05)
 - **S06**: [Deep Learning and Embeddings](./S06)
+- **S07**: [Sequence and sequence to sequence  models](./S07)
