@@ -11,3 +11,5 @@ Welcome to my personal repository for the **NLP** course.
 - **S05**: [Evaluation metrics](./S05)
 - **S06**: [Deep Learning and Embeddings](./S06)
 - **S07**: [Sequence and sequence to sequence  models](./S07)
+- **S08**: [Fine tunning and assesment](./S08)
+- **S09**: [Transformers and foundation models](./S09)
