@@ -14,7 +14,9 @@ In the first example, we can see that the pilot repeats almost exactly what the 
 
 ## Interface 
 
-![Descripción de la imagen](app.png)
+![Descripción de la imagen](photos/app.png)
+![Descripción de la imagen](photos/image.png)
+![Descripción de la imagen](photos/image2.png)
 
 ## APP
 
@@ -36,3 +38,9 @@ Since the output was not what I expected (it included the reasoning), I added a 
     else:
         clean_response = response_text.split("\n")[-1]
 ```
+
+## Performace
+
+Considering that this use case is quite straightforward, almost any LLM will perform well on the task given the right instructions as it only has to repit the same information. However, if we look at the first examples, despite specifying that wind information should not be repeated, the model includes it anyway.
+
+These types of mistakes, while not ideal, are generally not critical in day-to-day operations, as they are unlikely to have any impact on actual airport procedures.
