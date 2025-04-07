@@ -1,32 +1,43 @@
 import lmstudio as lms
 import streamlit as st
 
-st.title("TWR controller agent")
+st.title("🗼 TWR Controller Agent")
 
 st.markdown("""
-Writte a promt as you where an ATC and the app will show what the pilot should say
-- RYR684V wind 240 8kt cleared to land runway 24L -> expeted output -> cleared to land runway 24R RYA684V
-- VLG54WT taxi to HP01 runway 24L via M, P, L, k  -> Taxi to HP01 runway 24L via M, P, L, k, VLG54WT
+Enter an ATC instruction and the app will generate the expected pilot readback.
+
+**Examples:**
+- ATC: `RYR684V wind 240 8kt cleared to land runway 24L`  
+  Pilot: `Cleared to land runway 24L, RYR684V`
+
+- ATC: `VLG54WT taxi to HP01 runway 24L via M, P, L, K`  
+  Pilot: `Taxi to HP01 runway 24L via M, P, L, K, VLG54WT`
 """)
 
-
-# Specify context usage
-
 context = """
-You are a pilot and your ouput will be a simple phase that will try to match what a pilot says after the atc give them an instruction.
-Normally, you only have to repit everything the tell your but the callsing and elements like wind and traffic information should not be repited.
-You will face different types of comunication from 3 different dependencies: delivery, tower, and ground.
+You are a pilot. Respond ONLY with a short and realistic readback phrase that a pilot would say after receiving ATC instructions. 
+Do NOT include internal thoughts, explanations, or reasoning. 
+Only output the exact pilot response as a single line.
 """
 
-# Create buttoms
+# Buttoms and text box
+prompt = st.text_area("✈️ ATC Instruction:", height=100)
+button = st.button("🎧 Generate Pilot Response")
 
-buttom = st.button("Enviar solicitud")
-prompt = st.text_area("ATC message: ")
-
-if buttom and prompt.strip():
+if button and prompt.strip():
     model = lms.llm("deepseek-r1-distill-qwen-7b")
     full_prompt = context + "\n\n" + prompt
     result = model.respond(full_prompt)
 
-    st.markdown("Pilot response:")
-    st.write(result)
+    # Filter the response so the output is concice
+    response_text = result.content.strip()
+    if "<think>" in response_text:
+        clean_response = response_text.split("<think>")[-1].strip().split("\n")[-1]
+    else:
+        clean_response = response_text.split("\n")[-1]
+
+    st.markdown("#### 🧑‍✈️ Pilot Response:")
+    st.success(clean_response)
+
+elif button:
+    st.warning("Please enter an ATC instruction before submitting.")
