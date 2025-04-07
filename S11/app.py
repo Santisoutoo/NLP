@@ -18,3 +18,7 @@ Normally, you only have to repit everything the tell your but the callsing and e
 You will face different types of comunication from 3 different dependencies: delivery, tower, and ground.
 """
 
+# Create buttoms
+
+buttom = st.button("Enviar solicitud")
+buttom_text = st.text_area("ATC message: ")
