@@ -1,15 +1,34 @@
+
 # Pilot response agent based on `deepseek-r1-distill-qwen-7b`
 
-This application trys to implement an agent that acts as a pilot communicating with Air Traffic Control (ATC).
+This application aims to implement an agent that acts as a pilot communicating with Air Traffic Control (ATC).
 
-The standard communication workflow in this context involves the controller speaking first, followed by the pilot repeating the message. This readback procedure ensures that the message was clearly understood and helps prevent any miscommunication.
+In standard ATC communications, the controller speaks first, and the pilot responds by repeating the essential parts of the message. This readback procedure ensures that the message has been clearly understood and helps prevent miscommunication.
 
-Here are some examples: 
+ATC instructions typically come from three main units or dependencies, each responsible for a specific phase of the flight on the ground:
 
-- RYR684V wind 240 8kt cleared to land runway 24L -> expeted output -> cleared to land runway 24R RYA684V
-- VLG54WT taxi to HP01 runway 24L via M, P, L, k  -> Taxi to HP01 runway 24L via M, P, L, k, VLG54WT
+**Delivery (DEL):** Issues the initial clearance, including the departure route (SID), runway, squawk code, and initial altitude.
 
-In the first example, we can see that the pilot repeats almost exactly what the controller said. However, non-essential information such as the wind is intentionally omitted in the response. This is done to minimize the time spent on the frequency, allowing other pilots to communicate more efficiently.
+**Ground (GND):** Manages taxi clearances between the gate and the runway (or vice versa), including holding points and taxiways.
+
+**Tower (TWR):** Handles clearances for takeoff and landing, as well as immediate traffic coordination near the runway.
+
+Here are some **examples**:
+
+    TWR
+    - ATC: `RYR684V wind 240 8kt cleared to land runway 24L`  
+    Pilot: `Cleared to land runway 24L, RYR684V`
+
+    GND
+    - ATC: `VLG54WT taxi to HP01 runway 24L via M, P, L, K`  
+    Pilot: `Taxi to HP01 runway 24L via M, P, L, K, VLG54WT`
+                
+    DEL
+    - ATC: `RYR684V, cleared to Dublin via PELAX 2A departure, runway 24L, initial climb 5000 feet, squawk 4132.`
+    
+    Pilot: `Cleared to Dublin via PELAX 2A, runway 24L, initial climb 5000 feet, squawk 4132, RYR684V.`    
+
+In the first example, we see that the pilot repeats almost exactly what the controller said. However, non-essential information such as wind is intentionally omitted in the response. This helps reduce the time spent on the radio frequency, allowing other pilots to communicate more efficiently.
 
 
 ## Interface 
