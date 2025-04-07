@@ -7,11 +7,20 @@ st.markdown("""
 Enter an ATC instruction and the app will generate the expected pilot readback.
 
 **Examples:**
+
+TWR
 - ATC: `RYR684V wind 240 8kt cleared to land runway 24L`  
   Pilot: `Cleared to land runway 24L, RYR684V`
 
+GND
 - ATC: `VLG54WT taxi to HP01 runway 24L via M, P, L, K`  
   Pilot: `Taxi to HP01 runway 24L via M, P, L, K, VLG54WT`
+            
+DEL
+- ATC: `RYR684V, cleared to Dublin via PELAX 2A departure, runway 24L, initial climb 5000 feet, squawk 4132.`
+  
+  Pilot: `Cleared to Dublin via PELAX 2A, runway 24L, initial climb 5000 feet, squawk 4132, RYR684V.`    
+
 """)
 
 context = """
