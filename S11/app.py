@@ -21,4 +21,12 @@ You will face different types of comunication from 3 different dependencies: del
 # Create buttoms
 
 buttom = st.button("Enviar solicitud")
-buttom_text = st.text_area("ATC message: ")
+prompt = st.text_area("ATC message: ")
+
+if buttom and prompt.strip():
+    model = lms.llm("deepseek-r1-distill-qwen-7b")
+    full_prompt = context + "\n\n" + prompt
+    result = model.respond(full_prompt)
+
+    st.markdown("Pilot response:")
+    st.write(result)
